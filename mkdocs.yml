@@ -7,7 +7,7 @@ nav:
     - مفاهیم devops: devops_concepts.md
     - Containerization: containerization.md
     - Orchestration: orchestration.md
-    - Infrastructure_as_code.md
+    - IaC: Infrastructure_as_code.md
     - version control system: vcs.md
     - CI/CD server: CI_CD_server.md
     - Monitoring and loging tool: monitoring_tools.md
