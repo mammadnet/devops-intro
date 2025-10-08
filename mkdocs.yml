@@ -31,5 +31,17 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-watch:
-  - ./docs
+
+
+extra:
+  social:
+    - icon: simple/github 
+      link: https://github.com/mammadnet
+    - icon: fontawesome/brands/linkedin-in
+      link: https://www.linkedin.com/in/mohamadiann/
+    - icon: material/web
+      link: https://mamadnet.ir/
+
+  generator: false
+
+copyright: Just For Fun !!!
