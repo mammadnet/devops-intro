@@ -56,52 +56,52 @@ CI/CD مخفف Continuous Integration و Continuous Deployment یا Continuous D
 ```
 git ‘url’
 ```
-
+---
 #### اجرای دستور shell در محیط لینوکس
 ```
 sh 'command'
 ```
-
-* اجرای دستور در محیط Windows
+---
+- اجرای دستور در محیط Windows
 ```
 bat 'command'
 ```
-
+---
 #### چاپ متن در خروجی کنسول
 
 ```
 echo 'text'
 ```
-
+---
 #### گرفتن تایید دستی از کاربر
 ```
 input message: 'Approve deployment?'
 ```
-
+---
 #### ذخیره خروجی build
 * ذخیره خروجی build برای مراحل بعدی یا دانلود
 ```
 archiveArtifacts 'target/*.jar'
 ```
-
+---
 #### متغیر محیطی
 * تعریف متغیرهای محیطی در pipeline
 ```
 environment { KEY = "VALUE" }
 ```
-
+---
 #### post
 * تعیین اقداماتی بعد از موفق یا ناموفق بودن job
 
 ```
 post { success { ... } failure { ... } }
 ```
-
+---
 #### اجرای چند stage به صورت همزمان
 ```
 parallel { ... }
 ```
-
+---
 #### triggers
 
 * triggers: مشخص میکند چه زمانی pipeline اجرا شود. برای مثال کد زیر تعیین میکند که pipeline هر روز کاری ساعت 2 اجرا شود.
@@ -111,7 +111,7 @@ triggers {
   cron('H 2 * * 1-5')
 }
 ```
-
+---
 #### تعیین یک agent برای اجرا
 ```
 agent { label 'linux-node' }
