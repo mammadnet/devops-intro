@@ -1,4 +1,5 @@
 site_name: DevOps intro 
+site_url: https://devops.mamadnet.ir/
 nav:
   - home: index.md
   - مطالب:
