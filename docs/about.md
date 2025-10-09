@@ -32,4 +32,4 @@
 - 🌐 وب‌سایت: [https://mamadnet.ir](https://mamadnet.ir)  
 - 💻 گیت‌هاب: [https://github.com/mammadnet](https://github.com/mammadnet)  
 - 💼 لینکدین: [https://www.linkedin.com/in/mammadnet](https://www.linkedin.com/in/mammadnet)  
-- 📚 پروژه: [https://mammadnet.github.io/devops-intro](https://mammadnet.github.io/devops-intro)
+- 📚 پروژه: [https://github.com/mammadnet/devops-intro](https://github.com/mammadnet/devops-intro)
