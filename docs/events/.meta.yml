@@ -1,0 +1,6 @@
+social:
+ cards_layout_options:
+    background_color: "#7a8f9e"
+    background_image: null
+    logo: assets/social_logo.png
+    description: DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems.
