@@ -1,5 +1,8 @@
 site_name: DevOps intro 
 site_url: https://devops.2mohsen.ir/
+site_description: DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems.
+site_author: Mohammad Mohammadian
+repo_url: https://github.com/mammadnet/devops-intro
 nav:
   - home: index.md
   - مطالب:
@@ -25,8 +28,8 @@ theme:
     - navigation.tabs
 
 plugins:
-    - meta
-    - social
+  - meta
+  - social
 
 markdown_extensions:
   - attr_list
