@@ -1,0 +1,1431 @@
+
+<!doctype html>
+<html lang="fa" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems.">
+      
+      
+        <meta name="author" content="Mohammad Mohammadian">
+      
+      
+        <link rel="canonical" href="https://devops.2mohsen.ir/devops_concepts/">
+      
+      
+        <link rel="prev" href="../devops_evolution/">
+      
+      
+        <link rel="next" href="../containerization/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>مفاهیم devops - DevOps intro</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="مفاهیم devops - DevOps intro" >
+      
+        <meta  property="og:description"  content="DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems." >
+      
+        <meta  property="og:image"  content="https://devops.2mohsen.ir/assets/images/social/devops_concepts.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://devops.2mohsen.ir/devops_concepts/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="مفاهیم devops - DevOps intro" >
+      
+        <meta  name="twitter:description"  content="DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems." >
+      
+        <meta  name="twitter:image"  content="https://devops.2mohsen.ir/assets/images/social/devops_concepts.png" >
+      
+    
+    
+  </head>
+  
+  
+    <body dir="rtl">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#devops" class="md-skip">
+          پرش به محتویات
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="سرتیتر">
+    <a href=".." title="DevOps intro" class="md-header__button md-logo" aria-label="DevOps intro" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps intro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              مفاهیم devops
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mammadnet/devops-intro" title="رفتن به مخزن" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="زبانه‌ها" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../befor_devops/" class="md-tabs__link">
+          
+  
+  
+  مطالب
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  درباره
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="هدایت" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DevOps intro" class="md-nav__button md-logo" aria-label="DevOps intro" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    DevOps intro
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mammadnet/devops-intro" title="رفتن به مخزن" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    مطالب
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            مطالب
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../befor_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    دنیای قبل devops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops_evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ظهور devops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    مفاهیم devops
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    مفاهیم devops
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="فهرست موضوعات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      فهرست موضوعات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#virtualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      virtualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="virtualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      دو نوع اصلی hypervisor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#containerization-and-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containerization and Orchestration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-as-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure as Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure as Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lac-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      دلایل استفاده از LaC در DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vcs-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      کاربردها VCS در DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      مراحل CI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      مشکلات حل شده با CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Delivery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Delivery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-delivery-continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      تفاوت Continuous Delivery با Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      لاگینگ (Logging):
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="لاگینگ (Logging):">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      دسته های مختلف لاگ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ساختار لاگ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containerization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Containerization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Infrastructure_as_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    version control system
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI_CD_server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI/CD server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring and loging tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud_computing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cloud computing and DevOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    درباره
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="فهرست موضوعات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      فهرست موضوعات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#virtualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      virtualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="virtualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hypervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      دو نوع اصلی hypervisor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#containerization-and-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containerization and Orchestration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-as-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure as Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure as Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lac-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      دلایل استفاده از LaC در DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vcs-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      کاربردها VCS در DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      مراحل CI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      مشکلات حل شده با CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Delivery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Delivery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous-delivery-continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      تفاوت Continuous Delivery با Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      لاگینگ (Logging):
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="لاگینگ (Logging):">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      دسته های مختلف لاگ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ساختار لاگ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="devops">اصول DevOps</h1>
+<h2 id="virtualization">virtualization</h2>
+<p>در اوایل عصر اینترنت و نرم‌افزار،‌ برنامه ها مانند کشتی های عظیمی بودند که باید روی دریایی از سخت‌افزار مستقر میشدند. توسعه دهنده‌ها کد را روی کامپیوتر شخصیشان توسعه میداند و سپس آن را به تیم operation تحویل میدادند،‌ تیم operation نیز یک سرور فیزیکی تهیه میکرد و به صورت دستی نصب بسته‌ها،‌ کتابخانه‌ها و انجام تنظیمات را انجام می‌داد،‌ اگر همه چیز درست پیش میرفت برنامه روی آن سرور اجرا می‌شد. اما این کار یک عمل تکرار پذیر نبود چون فقط لازم بود تا یک نسخه از یک کتابخانه روی سرور با نسخه‌ی روی کامپیوتر شخصی برنامه نویس(همان محیط توسعه) فرق داشته باشد تا برنامه رفتاری کاملا متفاوت روی سرور نشان دهد. از این پدیده به عنوان "Works on my machine" یاد میشود.</p>
+<p>برای کم کردن تاثیر این مشکل سازمان ها فایل های به نام "Golden images" ساختند. مدیر سیستم یک سرور را از صفر راه‌اندازی میکرد،‌ کتابخانه های و بسته ها را نصب می‌کرد سپس از آن سیستم عامل یک disk image میساخت و سپس این image را روی سرور های دیگر نصب میکرد. سازمان ها به این image بخصوص golden image میگفتند.</p>
+<p>اما این کار هم روش بهینه‌ی نبود زیرا برای یک تغییر کوچک باید به صورت دستی روی تمام سرورها عملیات نصب را انجام داد. البته در همین حین هم مردم به سمت اسکریپت های نصب برای خودکار کردن عملیات نصب سیستم رفتند اما این روش هم چنان بهینه نبود.</p>
+<p>در همان زمان، ایدهٔ مجازی‌سازی به میدان آمد و داستان رنگ تازه‌ای گرفت. به‌جای نگه داشتن یک سرور فیزیکی برای هر برنامه (که هزینه و مصرف انرژی بالایی داشت) محققان و شرکت‌ها راهی برای اجرای چند «ماشین مجازی» روی یک سخت‌افزار واحد یافتند. ماشینِ مجازی شباهت زیادی به یک کامپیوتر واقعی داشت یعنی سیستم‌عامل خودش را داشت، می‌توانست reboot شود و نرم‌افزارها را مستقل از محیط بیرونی ایزوله اجرا کند. در قلب این فناوری، «هایپروایزر» قرار داشت — یک لایهٔ نرم‌افزاری که منابع سخت‌افزار را بین چند ماشین مجازی تقسیم می‌کرد. یعنی منابع یک سیستم می توانست بر روی چند سیستم‌عامل تقسیم شود و هر سیستم‌عامل با توجه به نیازی که دارند منابع بگیرند.</p>
+<p>لایه‌ی که بین ماشین مجازی (guest machine) ماشین میزبان (host machine) قرار می‌گیرد hypervisor نام دارد. این لایه مدیریت منابع بین ماشین های مجازی نصب شده را برعهده دارد و میتواند بر اساس تنظیماتی که برای هر ماشین مجازی انجام شده منابع را در اختیار ماشین مجازی قرار دهد. کار اصلی این لایه ترجمه کردن درخواست ها بین منابع مجازی و منابع سخت‌افزاری است.</p>
+<h3 id="hypervisor">دو نوع اصلی hypervisor</h3>
+<p>هایپروایزر نوع اول یا bare-metal که مستقیماً روی سخت‌افزار اجرا می‌شود. این نوع بین سخت افزار و ماشین های مجازی قرار میگیرد یعنی مستقیم با سخت‌افزار ارتباط دارد و درخواست‌ها را مستقیم به سخت‌افزار میرساند. این یعنی سیستم عامل یا برنامه ها دیگر وابسته به سخت‌افزار نی‌ستند و می‌توانند با کمک hypervisor مستقل از سخت‌افزار عمل کنند یا میتوان چند سیستم عامل را روی یک سخت‌افزار واحد اجرا کرد چون دیگر سیستم عامل وابسته به سخت افزار نیست.</p>
+<figure>
+<p><img alt="bare metal hypervisor" src="../media/bare_metal_hypervisor.png" /></p>
+<figcaption></figcaption>
+</figure>
+<p>و یکی از مزیت های دیگر این نوع، کم کردن محدودیت‌هاست یعنی سیستم عامل میتواند روی سخت‌افزار های متعددی بدون توجه به سازگاری با سخت‌افزار اجرا شود چون رابط اصلی آن دیگر hypervisor است.</p>
+<p>همانطور که گفته شد Bare-Metal hypervisor این امکان را فراهم می‌کند که سیستم‌عامل‌ها و برنامه‌های مرتبط با آن‌ها روی انواع مختلف سخت‌افزار اجرا شوند. همچنین می‌توان چندین سیستم‌عامل و ماشین مجازی (guest machines) بر روی یک سرور فیزیکی (host machine) مستقر شوند. از آنجا که ماشین‌های مجازی مستقل از سخت‌افزار فیزیکی هستند، می‌توانند از یک دستگاه به دستگاه دیگر یا از یک پلتفرم به پلتفرم دیگر منتقل شوند و workloads و شبکه، حافظه، ذخیره‌سازی و قدرت پردازشی را بر اساس نیاز میان چندین سرور توزیع کرد.</p>
+<p>هایپروایزر نوع دوم یا hosted-hypervisors، این نوع مستقیم روی سخت‌افزار نصب نمی‌شود بلکه به عنوان یک نرم‌افزار روی یک OS نصب میشود و از طریق این OS میانی با سخت‌افزار ارتباط دارد.</p>
+<p>سیستم های مهمان نیز روی این hypervisor که روی یک سیستم‌عامل دیگر نصب شده نصب میشوند.</p>
+<figure>
+<p><img alt="hosted hypervisor" src="../media/hosted_hypervisor.png" /></p>
+<figcaption></figcaption>
+</figure>
+<p>مجازی‌سازی در سطح دیتاسنتر و سرور نقطه‌عطفی بود که نحوهٔ استفادهٔ سازمان‌ها از سخت‌افزار و ارائهٔ سرویس‌ها را به‌کلی تغییر داد. مجازی‌سازی دارای مزایای بزرگی بود. به طوری که یک دیتاسنتر که قبلاً با ده‌ها سرورِ فیزیکی پر شده بود، حالا با همان سخت‌افزار می‌توانست ده‌ها یا صدها ماشین مجازی را میزبانی کند. تیم‌های توسعه و عملیات می‌توانستند با استفاده از قالب‌های VM یا snapshots، محیط‌های آزمایشی را سریع‌تر بسازند و در صورت خطا به وضعیت قبلی بازگردند. امکاناتی مثل live migration (انتقالِ یک VM در حال کار از یک میزبان به میزبان دیگر) و snapshot‌ گرفتن، انعطاف‌پذیری و در دسترس‌پذیری را بالا بردند.</p>
+<p>اما مجازی‌سازی هم معایبی داشت. هر VM یک سیستم‌عامل کامل داشت یعنی منابعِ بیشتری مصرف می‌شد: حافظه، فضای دیسک، و زمانِ بوت. برای تیم‌هایی که نیاز به چرخهٔ توسعهٔ سریع و دفعات بسیار بالای استقرار داشتند (CI/CD)، بوتِ چند دقیقه‌ایِ VM ها و سنگینی آنها بِه‌سرعت تبدیل به مانع شد. همچنین VM image ها (فایل های که VM ها از روی آن نصب می‌شوند) حجیم و مدیریت به‌روز نگه‌داشتن‌شان پیچیده بود.</p>
+<p>برای حل بخشی از این مشکلات، ابزارها و روش‌هایی رشد کردند: مدیریت پیکربندی (configuration management) مثل CFEngine، بعد Puppet و Chef و سپس Ansible آمدند تا پس از نصب شدن VM ها، تنظیمات را به‌صورت قابل‌تکرار اعمال کنند. به‌جای نصب دستی بسته‌ها، یک playbook یا manifest تعریف می‌شد که سرور را به وضعیت موردنظر می‌رساند. این باعث شد که حتی VM های تازه‌ نصب شده بتوانند به‌صورت خودکار پیکربندی شوند؛ اما چرخهٔ کلی هنوز سنگین و تا حدی کند بود چون هنوز زمان بوت شدن VM ها طولانی بود.</p>
+<p>در پایانِ این بخشِ، باید گفت که مجازی‌سازی پلی بود میان دنیای فیزیکی و دنیای کانتینری که بعداً آمد. مجازی‌سازی مشکلاتِ بزرگی را حل کرد، هزینه‌ها و پیچیدگیٔ فیزیکی را کاهش داد و امکان چابکی بیشتری فراهم آورد. اما وزنِ سیستم‌عاملِ کامل و زمان‌های راه‌اندازی آن، جرقهٔ جستجو برای راه‌حل‌های سبک‌تر را روشن کرد. این جستجو در ادامه راه به ظهور فناوری‌هایی انجامید که کانتینرها را ممکن کردند.</p>
+<h2 id="containerization-and-orchestration">Containerization and Orchestration</h2>
+<p>همان طور که در بخش قبلی گفته شد سازمان ها ابتدا برنامه ها را روی سرور های فیزیکی اجرا می‌کردند و هر سرور حکم یک ماشین مجزا را داشت، سیستم‌عامل، کتابخانه‌ها، تنظیمات همه به صورت دستی و با اسکریپت‌های متعددی نصب می‌شدند.</p>
+<p>با ورودِ مجازی‌سازی (virtualization) داستان جهشی پیدا کرد. به‌جای اختصاص یک سرور فیزیکی به هر OS هایپروایزرها امکان اجرای چند ماشین مجازی (VM) روی همان سخت‌افزار را دادند؛ هر VM همانند یک کامپیوتر کامل رفتار می‌کرد و ایزولاسیونِ قوی‌تری فراهم می‌نمود.</p>
+<p>اما VMها هر‌کدام وزنِ خودشان را داشتند، هر کدام یک سیستم‌عامل کامل، پس زمانِ بوت، مصرفِ حافظه و حجمِ VM image ها هنوز مانعِ اجرای چرخه‌های سریع توسعه و مقیاس‌پذیری نرم‌افزار می‌شد.</p>
+<p>در همین حین بود که مهندسین روی ایده‌ای کار کردند که بعداً به control groups یا «cgroups» معروف شد مکانیزمی در هستهٔ لینوکس برای محدودسازی و مدیریت منابع (CPU، حافظه، I/O و…) مجموعه‌ای از پردازش‌ها. cgroups تعیین می‌کند هر گروه از پروسس‌ها چقدر از منابع را می‌توانند مصرف کنند و امکان مانیتورینگ منابع را فراهم می‌آورد. Cgroups این امکان را میدهد تا مجموعه‌ای از پروسس‌ها را گروه‌بندی کرد و برای آن گروه محدودیت یا سهمِ منابع تعریف کرد، برای مثال مقدار حافظهٔ مجاز، سهم CPU و غیره.</p>
+<p>cgroups، همراه با مفهومی دیگر به‌نام namespaces پا به عرصه گذاشت. Namespaces یا فضای اسمی که سازوکار هسته لینوکس است، که «دید» یک پروسس را از منابع سیستم ایزوله می‌کند  مثلاً دیدن PIDها، شبکه، دستگاه های mount شده و کاربران و غیره. هر namespace یک نوع مجزا دارد و وقتی یک پروسس داخل namespace خاصی قرار می‌گیرد، فقط نُمایی از منابع را می‌بیند که مربوط به همان namespace است. یعنی میتوان یک برای یک فرایند تعیین کرد که چه مقدار از منابع را در اختیار بگیرد و با چه فرایندهای دیگری ارتباط داشته باشد.</p>
+<p>وقتی نیازمندی های پایه در هسته پیاده شدند، پروژه‌هایی مثل (LXC (Linux Containers پدید آمدند تا این قابلیت‌ها را به‌صورت عملی دربیاورند: LXC در حوالی 2008 به‌عنوان روشی برای اجرای چند «سیستمِ لینوکسی ایزوله» روی یک میزبان معرفی شد و نشان داد که می‌شود بدون سربارِ یک kernel جدا، محیط‌های ایزوله و سبک ساخت.</p>
+<figure>
+<p><img alt="container evolution" src="../media/Container_Evolution-.png" /></p>
+<figcaption></figcaption>
+</figure>
+<p>با وجود قابلیت‌های فنی، چیزی کم بود: تجربهٔ توسعه‌دهنده، ابزارِ ساخت registry  ، image مرکزی و یک جریان کاری ساده. این‌جا بود که Docker (که در ۲۰۱۳ رونمایی و اوپن‌سورس شد) نقشی کلیدی بازی کرد. Docker با معرفی Dockerfile برای توصیف ساخت image CLI ساده، و Docker Hub به‌عنوان registry عمومی، مفهومِ «یک‌بار بساز، هرجا اجرا کن» را به دنیای توسعه‌دهندگان آورد. Docker با استفاده از ویژگی های توسعه داده شده در کرنل لینوکس مفهوم کانتینر را به وجود آورد.</p>
+<p>یعنی کانتینرها دیگر فقط یک تکنیکِ هسته‌ای در لینوکس نبودند؛ بلکه به یک ابزار روزمرهٔ توسعه و عرضه تبدیل شدند.</p>
+<blockquote>
+<p>Image: فایلی که از روی آن container ساخته میشود</p>
+<p>Registry: جایی که میتوان فایل های image را از آن دریافت کرد یا روی آن آپلود کرد</p>
+</blockquote>
+<p>همراه با پراکندگی کانتینرها در محیط‌های واقعی، نیاز به مدیریتِ تعداد زیادی کانتینر و سرویس هم بالا رفت. یعنی دیگر کنترل دستی کانتینر ها در سازمان ها بهینه نبود. گوگل که سال‌ها قبل تجربه‌هایی مشابه در مقیاسِ بزرگ (Borg و Omega) داشت، الهام‌بخش پروژه‌هایی شد که نهایتاً به Kubernetes انجامید؛ Kubernetes در 2013 به‌عنوان یک پروژهٔ اوپن‌سورس معرفی شد و ابزارهای لازم برای اورکستریشنِ کانتینرها (پادها، دیپلویمنت‌ها، سرویس‌یابی، scheduler و غیره) را دمِ دستِ همه گذاشت. این ترکیب «کانتینرِ سبک + ارکستریشن مقیاس‌پذیر» راهِ معماری‌های cloud-native و microservices را گشود.</p>
+<figure>
+<p><img alt="orchestration" src="../media/orchestraion.png" /></p>
+<figcaption></figcaption>
+</figure>
+<p>Orchestration به‌معنای «مدیریت خودکار چرخهٔ اجرا برنامه‌ها و سرویس‌ها در مقیاس بزرگ» است یعنی وقتی تعداد زیادی کانتینر، سرویس، شبکه و ذخیره‌سازی دارید، ارکستراتوار وظیفه دارد آنها را بر اساس قواعد مشخص شده راه‌اندازی، هماهنگ، مقیاس، نگهداری و در صورت نیاز ترمیم کند. همانند رهبر یک ارکستر که از روی نت‌ها به سازها می‌گوید چه زمانی و چگونه اجرا کنند، ارکستراتوار هم از روی تعاریف مشخص شده(مانند فایل YAML) می‌فهمد چگونه container ها را مدیریت کند.</p>
+<h2 id="infrastructure-as-code">Infrastructure as Code</h2>
+<p>با ظهور مفاهیم جدیدی مانند container و virtualization ساخت و حذف محیط های توسعه بسیار آسان شد و می‌شد با سرعت زیادی محیط های مورد نیاز را بالا آورد و در پایان آن ها را حذف کرد.</p>
+<p>اما این پیشرفت دغدغه‌ی جدیدی برای سازمان ها ایجاد کرد، اینکه در اکثر مواقع تعداد این محیط های ساخته شده بسیار زیاد میشد و سازمان ها نیاز پیدا کردند تا روشی برای خودکارسازی مدیریت این محیط ها به وجود آورند، یعنی از از لحظه‌ی ساخت یک محیط تا آماده کردن و انجام تنظیمات آن به صورت اتوماتیک صورت گیرد.</p>
+<p>همان گونه که در بخش های پیشین گفته شد در گذشته بسیاری از سازمان‌ها سرورها و تنظیمات مربوط به آن را دستی پیکربندی می‌کردند (مانند SSH، GUI،اسکریپت‌های پراکنده). وقتی تعداد سرورها یا محیط‌ها افزایش یافت خطا های انسانی مانند تنظیمات ناهماهنگ زیاد میشد، زمان آماده کردن یک محیط جدید طولانی میشد، "work on my machine" تبدیل به یک مشکل اساسی شد چون برنامه نوشته شده روی محیط توسعه‌ی که برنامه نویس روی آن کد را پیاده‌سازی کرده است کار میکرد و انتظار داشت روی محیط نهایی هم به درستی کار کند که در بسیاری از مواقع این عمل مورد انتظار نبود چون تنظیمات و بسته های نصب شده روی محیط توسعه با محیط نهایی فرق داشت.</p>
+<p>این مشکلات باعث شد دنبال راهی باشند که کارها تکراری و قابل پیش‌بینی شود به گونه ی که تنظیم محیط‌های ساخته شده از قبل نوشته شده باشد و تمام تنظیمات یک محیط جدید با محیط های قبلی سازگار باشد و در حالت کلی IaC یعنی توصیف و مدیریت منابع زیرساختی (مثل سرورها، شبکه‌ها، ذخیره‌سازی و تنظیمات) با استفاده از فایل‌های قابل درک برای انسان (کد یا قالب‌ها) به‌جای انجام همه چیز دستی از طریق CLI یا صفحه‌کلید. این فایل‌ها قابل نسخه‌بندی، بررسی، تست و اجرا هستند و باعث می‌شوند رفتار زیرساخت تکرارپذیر و قابل پیش‌بینی شود.</p>
+<h3 id="lac-devops">دلایل استفاده از LaC در DevOps</h3>
+<ul>
+<li>سرعت: راه‌اندازی محیط‌های جدید یا تغییرات در محیط موجود خیلی سریع‌تر و خودکار انجام می‌شود.</li>
+<li>تکرارپذیری و یکنواختی: محیط‌ها (توسعه، تست، تولید) با هم سازگار می‌مانند و «work on my machine» کمتر رخ می‌دهد.</li>
+<li>همکاری بهتر: توضیحات زیرساخت در version control قرار می‌گیرد، تیم‌ها می‌توانند تغییرات را بررسی و بازبینی کنند.</li>
+<li>بازیابی و بازگشت (rollback): در صورت مشکل، می‌توان به نسخه‌ی قبلی کد زیرساخت بازگشت.</li>
+<li>شفافیت: چه تغییری، کی، چرا و چگونه انجام شده</li>
+</ul>
+<h2 id="version-control-systems">Version Control Systems</h2>
+<p>سیستم کنترل نسخه (VCS) ابزاری است که تغییرات در فایل‌ها (کد، اسناد، تنظیمات زیرساخت و …) را ثبت و مدیریت می‌کند. با این ابزار می‌توان تاریخچهٔ تغییرات را دید، به نسخه‌های قبلی برگشت، تغییرات افراد مختلف را ادغام (merge) کرد و تضادها (conflict) را مدیریت نمود.</p>
+<p>در ابتدا توسعه‌دهندگان فایل‌ها را به‌صورت دستی نگهداری می‌کردند. برای ذخیرهٔ نسخهٔ جدید، یک پوشهٔ جدا یا یک کپی با نام متفاوت ساخته می‌شد. این روش خیلی سریع بی‌نظم می‌شد ، یا هنگامی که چند نفر باهم روی یک پروژه کار میکردند فایل ها روی overwrite میشد یعنی این امکان وجود داشت که یک فایل را چند نفر همزمان تغییر داده باشند و تشخیص این که چه کسی چه تغییری داده بسیار سخت بود و جدا از آن سازمان ها نیاز داشتند بدانند چه تغییری در چه زمانی و توسط چه کسی انجام شده است، تا بتوانند مشکلات را ردیابی کنند یا به وضعیت سالم قبلی بازگردند.</p>
+<h3 id="vcs-devops">کاربردها VCS در DevOps</h3>
+<ul>
+<li>ذخیرهٔ تاریخچهٔ تغییرات<ul>
+<li>هر تغییر به‌عنوان یک commit ثبت می‌شود. اگر مشکلی ایجاد شد، می‌توان به نسخهٔ قبلی بازگشت.</li>
+</ul>
+</li>
+<li>همکاری تیمی (Collaboration)<ul>
+<li>چند نفر می‌توانند همزمان روی بخش‌های مختلف پروژه کار کنند. VCS تغییرات را ادغام و conflictّها را مدیریت می‌کند.</li>
+</ul>
+</li>
+<li>
+<p>مدیریت زیرساخت به‌عنوان کد (IaC)</p>
+<ul>
+<li>فایل‌های IaC هم در VCS نگهداری می‌شوند. این یعنی تنظیمات زیرساخت همانند کد برنامه قابل نسخه‌بندی و بازگشت به نسخه های قبلی هستند.</li>
+</ul>
+</li>
+<li>
+<p>ردیابی تغییرات </p>
+<ul>
+<li>مشخص است که چه کسی چه زمانی چه چیزی تغییر داده. این شفافیت برای امنیت سازمانی بسیار حیاتی است.</li>
+</ul>
+</li>
+<li>Branching و Workflow<ul>
+<li>تیم‌ها می‌توانند برای ویژگی‌های جدید (feature branches) یا رفع باگ‌ها، شاخه‌های جداگانه بسازند و بعد از تست آن را با شاخه اصلی ادغام کنند. این کار باعث ایجاد یک جریان توسعهٔ امن‌تر میشود.</li>
+</ul>
+</li>
+</ul>
+<h2 id="cicd">CI/CD</h2>
+<p>قبل شروع این مبحث باید چند اصطلاح را با هم مرور کنیم:</p>
+<p>محیط تولید یا production environment: جای که کد نهایی روی آن قرار میگیرد و کاربر نهایی با آن سروکار دارد.</p>
+<p>Staging environment: یک مرحله قبل از محیط تولید. این محیط کاملا شبه محیط تولید است، همان سرور، همان تنظیمات شبکه و همان کد. هدف اصلی این محیط این است که قبل از انتشار نهایی کد، مطمئن شویم که همه چیز درست کار میکند.
+محیط تست: محیطی که تیم تست (تیم QA) بررسی های لازم را روی کد انجام میدهد.
+محیط توسعه یا Development: جایی که برنامه نویس ها کد را مینویسند و تغییرات سریع را تست میکنند که معمولا پر از Debug و تغییرات لحظه‌ای است.</p>
+<p>از یک سناریو برای توضیح این مبحث استفاده میکنیم:</p>
+<p>فرض کنیم که یک تیم کوچک نرم‌افزاری داریم و آن‌ها روی یک اپلیکیشن وب کار می‌کنند.</p>
+<p>اوایل کار همه چیز ساده است: حجم کد ها کم است، اعضای تیم کم هستند و هر تغییری سریع روی سرور اصلی کپی می‌شود یعنی تیم میتواند بعد از اضافه کردن هر ویژگی جدید به برنامه، تغییرات ایجاد شده را در سرور اصلی اعمال کند.</p>
+<p>اما با بزرگ شدن برنامه و تعداد اعضای تیم،‌ هر نفر بخشی بزرگ از کد را تغییر میدهد،‌ مقدار تغییرات به نسبت زمان با افزایش اعضای تیم زیاد میشود، احتمال اینکه تغییرات یک شخص تغییرات دیگری را خراب کند، برای این همه تغییر تست کردن دستی بسیار زمان بر میشود و استقرار روی سرور تولید (production) پر از اضطراب و نگرانی است. (نگرانی از این جهت که آیا این بار درست کار میکند یا خیر)</p>
+<h3 id="continuous-integration">Continuous Integration</h3>
+<p>بعد از افزایش مقدار کد و اعضا، تیم تصمیم می‌گیرد به‌جای اینکه کدها را هفته‌ای یک بار با برنچ اصلی merge کنند، هر روز یا حتی چند بار در روز این کار را انجام دهند.</p>
+<p>مراحل انجام این کار بدین صورت است که:</p>
+<ul>
+<li>هر عضو تیم بعد از تغییر، کدش را به مخزن و برنچ مرتبط (VCS مثل Git) می‌فرستد.</li>
+<li>بلافاصله یک سیستم خودکار (CI server) کد را می‌گیرد، آن را build میکند، و تست‌ها را روی آن انجام میدهد.</li>
+<li>اگر مشکلی وجود داشته باشد، همان لحظه مشخص می‌شود.</li>
+</ul>
+<p>یک سناریو بزرگتر: </p>
+<p>فرض کن تیمی روی یک پروژه بزرگ کار می‌کند. هر توسعه‌دهنده روی لپ‌تاپ خودش تغییرات انجام می‌دهد. یکی در بخش لاگین تغییر می‌دهد، دیگری روی سیستم پرداخت، نفر سوم روی بخش رابط کاربری.</p>
+<p>این تغییرات روزها یا هفته‌ها روی دستگاه هر فرد باقی می‌مانند و وقتی زمان ادغام (merge) می‌رسد، ناگهان همه چیز با هم conflict میشود.
+ این لحظه را «integration hell» می‌نامند — چون حل ‌conflictها، خطا‌های عجیب و از کار افتادن کدها برای تیم یک کابوس می‌شود.</p>
+<p>با توجه به منطق CI، به‌جای اینکه همه تغییرات را یک‌جا ادغام کنیم، هر تغییر کوچک را همان لحظه وارد مخزن اصلی کنیم.</p>
+<h4 id="ci">مراحل CI</h4>
+<p>مراحل CI میتواند به شیوه زیر باشد:
+* 
+* توسعه‌دهنده تغییر کد را تمام می‌کند 
+* کد را به مخزن (Git) push می‌کند.
+* بلافاصله سرور CI (مثل Jenkins، GitLab CI یا GitHub Actions) فعال می‌شود:
+* کد را دریافت می‌کند.
+* پروژه را build می‌کند.
+* تست‌های خودکار (unit test، integration test) را اجرا می‌کند.
+* اگر مشکلی بود: همان لحظه به توسعه‌دهنده پیام داده می‌شود (ایمیل، پیام در Slack و …)
+* اگر همه چیز موفق باشد: تغییر به شاخه اصلی (main/master) ادغام می‌شود و تیم مطمئن میشود که  نسخه جدید سالم است.</p>
+<h4 id="ci_1">مشکلات حل شده با CI</h4>
+<ul>
+<li>کشف سریع خطاها: به‌جای اینکه خطاها هفته‌ها بعد از push آشکار شوند، همان روز و حتی شاید همان ساعت مشخص می‌شوند.</li>
+<li>کاهش ریسک: چون تغییرات کوچک هستند، اگر مشکلی ایجاد شود پیدا کردن دلیل مشکل و حل آن ساده‌تر است.</li>
+<li>بهبود همکاری: توسعه‌دهندگان مطمئن‌اند کدهایشان همیشه در یک مسیر مشترک و مطمئن با هم ترکیب می‌شود.</li>
+<li>پایه‌ای برای خودکارسازی بعدی: بدون CI، ساختن CD (تحویل یا استقرار خودکار) سخت یا غیرممکن است.</li>
+</ul>
+<h3 id="continuous-delivery">Continuous Delivery</h3>
+<p>پس از این که merge کردن با استفاده از CI به صورت خودکار انجام شد،‌ در مرحله‌ی بعد میتوانیم به صورت خودکار کد را به محیط تست یا استیجینگ ببریم. بدین معنی که کد به صورت خودکار بعد از مرحله CI روی محیط تست یا استیجینگ مستقر میشود و تیم QA و یا beta tester ها میتوانند آن تغییرات را ببینند.</p>
+<h4 id="continuous-delivery-continuous-integration">تفاوت Continuous Delivery با Continuous Integration</h4>
+<ul>
+<li>CI = تضمین می‌کند کد سالم و ادغام‌شده داریم.</li>
+<li>CD = تضمین می‌کند نسخه آمادهٔ انتشار همیشه موجود است.</li>
+<li>CI می‌گوید: «کد تو خراب نیست.»</li>
+<li>CD می‌گوید: «کد تو همین الان می‌تواند به‌صورت یک نسخه کامل منتشر شود.»</li>
+</ul>
+<h3 id="continuous-deployment">Continuous Deployment</h3>
+<p>حتی وقتی CI و CD وارد سازمان شدند، باز هم یک «ایستگاه آخر» وجود داشت:</p>
+<p>نسخه آماده بود، روی محیط staging تست شده بود، همه‌چیز درست به نظر می‌رسید اما هنوز تیم‌ها باید تصمیم می‌گرفتند که چه زمانی نسخه روی production برود. در بعضی مواقع تیم ها باید آخر هفته هم در شرکت میمانند و در ساعات پایانی شب و زمانی که بار سرور ها  در کمترین حالت خود است نسخه نهایی را منتشر می‌کردند.</p>
+<p>در این مرحله سازمان ها پا را فراتر گذاشتند و خواهان این بودند تا انتشار نسخه نهایی برنامه و قرار دادن آن در محیط Production به صورت خودکار انجام شود. یعنی وقتی برنامه همه تست‌ها موفق پشت سر گذراند، تغییرات به‌صورت خودکار مستقیماً به محیط تولید می‌روند و کاربران نهایی آن را میبینند.</p>
+<figure>
+<p><img alt="CI CD pipeline" src="../media/CICD-Pipeline.png" /></p>
+<figcaption></figcaption>
+</figure>
+<h2 id="monitoring-and-logging">Monitoring and Logging</h2>
+<p>بعد از این که برنامه به دست کاربر رسید و تمام تست ها روی آن انجام شد، حال نوبت به نظارت آن است. یعنی رفتار برنامه در هر لحظه مورد بررسی قرار گیرد و این رفتار ها ذخیره شود تا توانایی بررسی کلی برنامه را در طولانی مدت داشته باشیم.</p>
+<h3 id="logging">لاگینگ (Logging):</h3>
+<p>ثبت رویدادها و پیام‌ها؛ یعنی هر اتفاقی که در برنامه رخ میدهد ثبت شود. لاگینگ یعنی ثبت سیستماتیک رخدادها، پیام‌ها و وضعیت‌ها از اپلیکیشن‌ها و اجزای زیرساخت تا بتوانیم بعداً چه هنگام رفع خطا، چه برای تحلیل عملکرد یا برای مسایل امنیتی، آنچه اتفاق افتاده را بازسازی کنیم. به نوعی میتوان گفت که لاگ ها چشم و گوش ما در سیستم هستند.</p>
+<p>لاگ به عنوان یک امر حیاتی در سیستم تلقی میشود، وقتی اتفاقی رخ میدهد لاگ ها اولین منبع برای فهم و درک اتفاق هستند، لاگ ها میتوانند مسیر یک تراکنش یا درخواست را مشخص کنند.</p>
+<h4 id="_1">دسته های مختلف لاگ</h4>
+<ul>
+<li>Application logs: پیام‌های تولید شده توسط اپلیکیشن (خطاها، عملیات های مهم).</li>
+<li>Access logs: لاگ‌های وب‌سرور دربارهٔ هر درخواست HTTP</li>
+<li>System/OS logs: لاگ‌های سطح سیستم عامل (کرنل، سرویس‌ها).</li>
+<li>Security logs: لاگ‌های مربوط به تایید هویت، دسترسی‌ها.</li>
+<li>Infrastructure logs: لاگ‌های شبکه، لود بالانسر، کانتینرها و ارکستراتوار.</li>
+<li>Business logs: رویدادهای مهم تجاری مثل «خرید انجام شد» که برای محصول اهمیت دارد.</li>
+</ul>
+<h4 id="log-level">Log level</h4>
+<p>هر رکورد از لاگ که ذخیره میشود در ابتدای آن log level قرار دارد که نشان دهنده اهمیت این رکورد از لاگ است:</p>
+<ul>
+<li>DEBUG: این نوع لاگ معمولا وقتی برنامه در محیط Development قرار دارد فعال است و جزئیات بسیار زیادی از نوع عملکرد برنامه به منظور عیب یابی و دیباگ ذخیره میکند</li>
+<li>INFO: کارهای معمول و مهم که روند اجرای برنامه را توصیف می‌کنند (مثلاً "پرداخت انجام شد").</li>
+<li>WARN: شرایط غیرعادی که هنوز باعث crash کل سیستم نشده اما نیاز به توجه دارد.</li>
+<li>ERROR: خطاهایی که عملکرد یک بخش را مختل ;کرده است.</li>
+<li>FATAL (یا CRITICAL): خطاهای بحرانی که باعث از کار افتادن سیستم میشود و داده‌ها را به خطر می‌اندازد.</li>
+</ul>
+<hr />
+<h4 id="_2">ساختار لاگ</h4>
+<ul>
+<li>غیر ساختار یافته: ذخیره لاگ به صورت متنی، یعنی به گونه که انسان به راحتی بتواند آن را بخواند. در این نوع جستجو کردن و تحلیل لاگ بسیار سخت است.</li>
+<li>ساختار یافته: فرمت‌های JSON یا key-value؛ فیلتر، ایندکس و استخراج فیلدها در این نوع لاگ  راحت‌تر است.</li>
+</ul>
+<h3 id="monitoring">Monitoring</h3>
+<p>مانیتورینگ یعنی پیگیری مداوم وضعیت سیستم‌ها و سرویس‌ها با استفاده از شاخص‌های قابل‌سنجش (metrics)، تا بتوانیم سلامت، عملکرد و رفتار سیستم را در لحظه ببینیم، مشکل را زود کشف کنیم و براساس آن واکنش مناسبی داشته باشیم.</p>
+<p>لیست شاخص هایی که در بسیاری از سیستم ها، مهم است که نظارت شوند:</p>
+<ul>
+<li>Requests/sec: حجم ترافیک؛ افت یا جهش ناگهانی می‌تواند یک هشدار باشد.</li>
+<li>Error rate (%): درصد پاسخ‌های خطا؛ افزایش معمولاً به معنی مشکل در کد</li>
+<li>CPU / Memory / Disk: نشان‌دهنده فشار وارد بر منابع </li>
+<li>Thread/Connection pool usage: مقدار اتصال های باز که میتواند توسط کاربران ایجاد شده باشد. اگر به حد اکثر ظرفیت نزدیک شود، میتواند باعث تاخیر و خطا می‌شود.</li>
+</ul>
+<p>یکی از ویژگی های دیگر که در ابزارهای monitoring وجود دارد، داشبورد است؛ داشبورد‌ها ابزارِ شماتیک برای تصمیم‌گیری‌اند؛ هدفشان این است که در یک نگاه وضعیت سرویس یا بخش خاصی از سیستم را نشان دهند و زمینهٔ واکنش سریع را فراهم کنند. </p>
+<p>داشبوردها عمدتاً برای دیدن وضعیت جاری در محیط production به‌کار می‌روند: اطلاع سریع از سلامت سرویس‌ها، کشف و نمایش هشدارها، پیگیری حوادث و کاهش زمان بازیابی، نمایش عملکرد برای پیش‌بینی ظرفیت مورد نیاز در آینده، تحلیل اهداف کسب‌وکار (مثل تراکنش‌های موفق یا نرخ تبدیل) که نشان می‌دهد سرویس چقدر به اهداف تجاری نزدیک است.</p>
+<figure>
+<p><img alt="granfa dashboard" src="../media/dashboard.png" /></p>
+<figcaption></figcaption>
+</figure>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Just For Fun !!!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mammadnet" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/mohamadiann/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8c0-14.3 5.7-27.9 15.8-38S39.6 0 53.8 0s27.9 5.7 38 15.8 15.8 23.8 15.8 38c0 29.7-24.1 54.3-53.8 54.3M447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://mamadnet.ir/" target="_blank" rel="noopener" title="mamadnet.ir" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u06a9\u067e\u06cc \u0634\u062f", "clipboard.copy": "\u06a9\u067e\u06cc \u06a9\u0631\u062f\u0646", "search.result.more.one": "1 \u0645\u0648\u0631\u062f \u062f\u06cc\u06af\u0631 \u062f\u0631 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647", "search.result.more.other": "# \u0645\u0648\u0631\u062f \u062f\u06cc\u06af\u0631 \u062f\u0631 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647", "search.result.none": "\u0633\u0646\u062f\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f", "search.result.one": "1 \u0633\u0646\u062f \u06cc\u0627\u0641\u062a \u0634\u062f", "search.result.other": "# \u0633\u0646\u062f \u06cc\u0627\u0641\u062a \u0634\u062f", "search.result.placeholder": "\u0628\u0631\u0627\u06cc \u0634\u0631\u0648\u0639 \u062c\u0633\u062a\u062c\u0648 \u062a\u0627\u06cc\u067e \u06a9\u0646\u06cc\u062f", "search.result.term.missing": "\u0645\u0648\u062c\u0648\u062f \u0646\u06cc\u0633\u062a", "select.version": "\u0627\u0646\u062a\u062e\u0627\u0628 \u0648\u06cc\u0631\u0627\u06cc\u0634"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

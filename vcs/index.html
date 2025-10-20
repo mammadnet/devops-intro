@@ -1,0 +1,1632 @@
+
+<!doctype html>
+<html lang="fa" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems.">
+      
+      
+        <meta name="author" content="Mohammad Mohammadian">
+      
+      
+        <link rel="canonical" href="https://devops.2mohsen.ir/vcs/">
+      
+      
+        <link rel="prev" href="../Infrastructure_as_code/">
+      
+      
+        <link rel="next" href="../CI_CD_server/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>version control system - DevOps intro</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="version control system - DevOps intro" >
+      
+        <meta  property="og:description"  content="DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems." >
+      
+        <meta  property="og:image"  content="https://devops.2mohsen.ir/assets/images/social/vcs.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://devops.2mohsen.ir/vcs/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="version control system - DevOps intro" >
+      
+        <meta  name="twitter:description"  content="DevOps Intro — Practical, hands-on guides for CI/CD, Docker, Kubernetes, automation and monitoring to build reliable, scalable production systems." >
+      
+        <meta  name="twitter:image"  content="https://devops.2mohsen.ir/assets/images/social/vcs.png" >
+      
+    
+    
+  </head>
+  
+  
+    <body dir="rtl">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#version-control-system-git" class="md-skip">
+          پرش به محتویات
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="سرتیتر">
+    <a href=".." title="DevOps intro" class="md-header__button md-logo" aria-label="DevOps intro" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps intro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              version control system
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mammadnet/devops-intro" title="رفتن به مخزن" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="زبانه‌ها" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../befor_devops/" class="md-tabs__link">
+          
+  
+  
+  مطالب
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  درباره
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="هدایت" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DevOps intro" class="md-nav__button md-logo" aria-label="DevOps intro" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    DevOps intro
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mammadnet/devops-intro" title="رفتن به مخزن" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    مطالب
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            مطالب
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../befor_devops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    دنیای قبل devops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops_evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ظهور devops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops_concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    مفاهیم devops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containerization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Containerization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Infrastructure_as_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IaC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    version control system
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    version control system
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="فهرست موضوعات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      فهرست موضوعات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      مزایا
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      مفاهیم کلیدی
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="مفاهیم کلیدی">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository یا repo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-directory-working-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working directory / Working tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-staging-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      Index / Staging area
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    <span class="md-ellipsis">
+      HEAD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      rebase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conflict
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      دستورات گیت
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="دستورات گیت">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      clone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    <span class="md-ellipsis">
+      add
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      switch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rebase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      fetch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull" class="md-nav__link">
+    <span class="md-ellipsis">
+      pull
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push" class="md-nav__link">
+    <span class="md-ellipsis">
+      push
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dif" class="md-nav__link">
+    <span class="md-ellipsis">
+      dif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show" class="md-nav__link">
+    <span class="md-ellipsis">
+      show
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blame" class="md-nav__link">
+    <span class="md-ellipsis">
+      blame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revert" class="md-nav__link">
+    <span class="md-ellipsis">
+      revert
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI_CD_server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI/CD server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring and loging tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud_computing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cloud computing and DevOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    درباره
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="فهرست موضوعات">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      فهرست موضوعات
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      مزایا
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      مفاهیم کلیدی
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="مفاهیم کلیدی">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository یا repo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-directory-working-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working directory / Working tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-staging-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      Index / Staging area
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    <span class="md-ellipsis">
+      HEAD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      rebase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conflict
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      دستورات گیت
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="دستورات گیت">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      clone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    <span class="md-ellipsis">
+      add
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      branch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      switch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rebase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      fetch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull" class="md-nav__link">
+    <span class="md-ellipsis">
+      pull
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push" class="md-nav__link">
+    <span class="md-ellipsis">
+      push
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dif" class="md-nav__link">
+    <span class="md-ellipsis">
+      dif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show" class="md-nav__link">
+    <span class="md-ellipsis">
+      show
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blame" class="md-nav__link">
+    <span class="md-ellipsis">
+      blame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revert" class="md-nav__link">
+    <span class="md-ellipsis">
+      revert
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="version-control-system-git">Version control system: Git</h1>
+<p>سیستم کنترل نسخه یا VCS نرم‌افزاری است که تاریخچه تغییرات فایل‌ها (معمولاً کد یک پروژه) را ذخیره و مدیریت می‌کند. با VCS می‌توانید بازگردانی به نسخه‌های قبلی، مقایسه تغییرات، همکاری تیمی بدون تداخل و پیگیری مستقل هر تغییر را انجام دهید.</p>
+<h2 id="_1">مزایا</h2>
+<ul>
+<li>تاریخچهٔ کامل تغییرات و امکان بازگردانی (undo).</li>
+<li>همکاری هم‌زمان چند نفر روی یک پروژه و مدیریت ساده تداخل.</li>
+<li>امکان بررسی اینکه چه کسی چه تغییری داده و چرا (log).</li>
+<li>شاخه‌بندی و آزمایش ویژگی‌ها بدون تاثیر روی شاخهٔ اصلی (branching).</li>
+</ul>
+<h2 id="git">Git</h2>
+<h3 id="_2">مفاهیم کلیدی</h3>
+<h4 id="repository-repo">Repository یا repo</h4>
+<ul>
+<li>تمام تاریخچه و شاخه و آنچه مربوط به یک پروژه است.</li>
+</ul>
+<h4 id="working-directory-working-tree">Working directory / Working tree</h4>
+<ul>
+<li>شامل فایل‌هایی که شما آن‌ها را ویرایش می‌کنید یا در حال ویرایش آن هستید.</li>
+</ul>
+<h4 id="index-staging-area">Index / Staging area</h4>
+<ul>
+<li>جایی بین تغییر روی فایل و ایجاد یک   commit ،شامل فایل‌هایی که برای commit بعدی انتخاب شده‌اند. یعنی فایل های که در محیط staging هستند در کامیت پیشرو که قرار است ایجاد کنید ثبت میشوند</li>
+</ul>
+<h4 id="commit">Commit</h4>
+<ul>
+<li>یک "اسنپ شات" از تغییرات فایل ها که با یک hash id و نام نویسنده و تاریخ ثبت میشود. بعدا میتوان با ارجاع به id کامیت به تغییرات مربوط به آن بازگشت.</li>
+</ul>
+<h4 id="branch">Branch</h4>
+<ul>
+<li>شاخه (Branch) در گیت مثل یک مسیر جداگانه برای توسعهٔ کد است. فرض کنید کد اصلی پروژه روی خطی به نام main قرار دارد؛ حالا اگر بخواهید یک قابلیت جدید یا تغییر بزرگ را امتحان کنید بدون اینکه به کد اصلی آسیب بزنید، یک شاخه جدید می‌سازید. در این شاخه می‌توانید آزادانه تغییر ایجاد کنید، commit بزنید و حتی خرابکاری کنید، چون همهٔ این تغییرات جدا از شاخهٔ اصلی نگه داشته می‌شوند. وقتی کارتان تمام شد و مطمئن شدید تغییرات درست کار می‌کنند، می‌توانید شاخه را دوباره به شاخهٔ اصلی (merge) وصل کنید. این کار کمک می‌کند همزمان چند نفر روی پروژه کار کنند بدون اینکه مزاحم کار یکدیگر شوند.</li>
+</ul>
+<h4 id="head">HEAD</h4>
+<ul>
+<li>در واقع یک اشاره‌گر (Pointer) است که نشان می‌دهد شما همین الان روی کدام شاخه یا کدام commit قرار دارید. وقتی روی یک شاخه مثل main هستید، HEAD به آخرین commit آن شاخه اشاره می‌کند؛ یعنی هر تغییر و commit جدیدی که انجام دهید، از همان نقطه ادامه پیدا می‌کند. اگر HEAD را به یک commit قدیمی منتقل کنید، وارد حالتی به نام detached HEAD می‌شوید، یعنی دیگر روی شاخه خاصی نیستید و تغییرات شما به یک شاخه وصل نمی‌شوند مگر اینکه برای آن یک شاخه جدید بسازید. به زبان ساده: HEAD مثل یک نشانگر است که جای پای فعلی شما در تاریخچهٔ پروژه را مشخص می‌کند.</li>
+</ul>
+<h4 id="tag">Tag</h4>
+<ul>
+<li>مثل یک نشانه ثابت روی یک commit است. وقتی بخواهید یک نقطه مهم از تاریخچهٔ پروژه را علامت‌گذاری کنید، مثلاً زمان انتشار نسخهٔ ۱.۰، روی آن commit یک tag می‌زنید. بر خلاف شاخه که حرکت می‌کند و با commit‌های جدید جلو می‌رود، tag همیشه به همان commit خاص متصل می‌ماند و تغییر نمی‌کند. این باعث می‌شود بتوانید به راحتی به آن نسخهٔ مشخص برگردید یا کدی را که در زمان انتشار وجود داشته دقیقاً دوباره به دست آورید. به همین دلیل tag‌ها معمولاً برای نسخه‌دهی (versioning) و انتشار (release) استفاده می‌شوند.</li>
+</ul>
+<h4 id="remote">Remote</h4>
+<ul>
+<li>به یک نسخهٔ  از repository گفته می‌شود که روی یک سرور یا مکان دیگری (مثلاً GitHub، GitLab یا یک سرور داخلی) قرار دارد و همهٔ اعضای تیم می‌توانند به آن دسترسی داشته باشند. وقتی شما یک پروژه را کلون می‌کنید، معمولاً یک remote پیش‌فرض به نام origin ساخته می‌شود که به همان مخزن اصلی روی سرور اشاره دارد. با استفاده از remote می‌توانید تغییرات خود را به سرور بفرستید (push) یا تغییرات دیگران را دریافت کنید (pull/fetch). به زبان ساده، remote پلیست میان مخزن local شما و نسخهٔ مرکزی پروژه که امکان همکاری تیمی را فراهم می‌کند.</li>
+</ul>
+<h4 id="merge">Merge</h4>
+<ul>
+<li>یک روش برای ترکیب تغییرات یک شاخه با شاخهٔ دیگر. وقتی شما روی یک شاخهٔ اصلی (مثلاً main) کار می‌کنید و همزمان یک شاخهٔ جدید (مثلاً feature) ساخته‌اید، در نهایت باید تغییرات آن‌ها را با هم ادغام کنید. دستور git merge این کار را انجام می‌دهد: تغییرات شاخهٔ دیگر را وارد شاخهٔ فعلی می‌کند. اگر تغییرات با هم تداخلی نداشته باشند، این کار به‌صورت خودکار انجام می‌شود؛ اما اگر در فایل‌های مشابه تغییرات ناسازگار باشد، به اصطلاح conflict رخ می‌دهد و شما باید آن را به‌صورت دستی حل کنید. merge معمولاً یک commit جدید به نام merge commit ایجاد می‌کند که نشان می‌دهد دو شاخه در این نقطه به هم پیوسته‌اند.</li>
+</ul>
+<h4 id="rebase">rebase</h4>
+<ul>
+<li>روشی دیگر برای ترکیب شاخه‌هاست که تاریخچهٔ گیت را خطی‌تر و مرتب‌تر نشان می‌دهد. در rebase، commit‌های شاخهٔ شما یکی‌یکی روی شاخهٔ هدف (مثلاً main) "بازنویسی" و دوباره اعمال می‌شوند، انگار که از ابتدا آن تغییرات روی همان شاخه انجام شده‌اند. نتیجه این است که تاریخچهٔ پروژه ساده‌تر و یک‌دست‌تر می‌شود. با این حال، چون rebase تاریخچه را تغییر می‌دهد، نباید روی شاخه‌هایی که دیگران همزمان روی آن‌ها کار می‌کنند استفاده شود، چون باعث تداخل و مشکلات هماهنگی می‌شود.</li>
+</ul>
+<h4 id="conflict">Conflict</h4>
+<ul>
+<li>در گیت، Conflict زمانی رخ می‌دهد که دو تغییر ناسازگار به‌طور همزمان روی یک بخش از فایل ایجاد شوند و گیت نتواند به‌صورت خودکار تصمیم بگیرد کدام تغییر درست است. برای مثال، اگر شما در شاخهٔ feature خطی از یک فایل را تغییر دهید و همزمان در شاخهٔ main همان خط تغییر دیگری داشته باشد، هنگام merge یا rebase گیت متوقف می‌شود و آن قسمت را به‌عنوان conflict علامت می‌زند. در این حالت شما باید فایل را باز کنید، بخش‌های علامت‌گذاری‌شده را بررسی کنید و به‌صورت دستی تصمیم بگیرید کدام نسخه (یا ترکیبی از هر دو) درست است. </li>
+</ul>
+<h3 id="_3">دستورات گیت</h3>
+<h4 id="init">init</h4>
+<ul>
+<li>این دستور یک مخزن گیت جدید در پوشهٔ فعلی ایجاد می‌کند؛ یعنی پوشه‌ای به نام .git می‌سازد که همهٔ تاریخچه، پیکربندی داخلی و متادیتای گیت را نگه می‌دارد. معمولاً وقتی می‌خواهی یک پروژهٔ جدید را تحت کنترل git قرار دهید این را اجرا می‌کنیم.</li>
+</ul>
+<pre><code>git init
+</code></pre>
+<h4 id="clone">clone</h4>
+<ul>
+<li>مخزن remote (مثلاً GitHub/GitLab) را کپی می‌کند و یک پوشهٔ محلی کامل به همراه تاریخچه آن می‌سازد. آدرس می‌تواند SSH یا HTTPS باشد.</li>
+</ul>
+<pre><code>git clone &lt;repository-url&gt;
+</code></pre>
+<h4 id="status">status</h4>
+<ul>
+<li>وضعیت فعلی مخزن محلی را نشان می‌دهد: چه فایل‌هایی unstaged هستند، چه فایل‌هایی staged شده‌اند، کدام فایل‌ها untracked هستند، و روی چه شاخه‌ای هستید. اولین دستوری که قبل از commit یا push باید اجرا کرد تا مشخص شود چه چیزی تغییر کرده است.</li>
+</ul>
+<pre><code>git status
+</code></pre>
+<h4 id="add">add</h4>
+<ul>
+<li>فایل‌ها یا تغییرات را به staging area منتقل می‌کند تا در commit بعدی ثبت شوند. </li>
+</ul>
+<pre><code>git add &lt;path&gt;
+or
+git add .
+</code></pre>
+<ul>
+<li>به‌صورت تعاملی بخش‌هایی از تغییرات یک یا چند فایل را نشان می‌دهد و اجازه می‌دهد تنها بخش‌های مشخصی را stage کنی. وقتی می‌خواهی commit‌های منطقی و کوچک بسازی، بسیار مفید است.</li>
+</ul>
+<pre><code>git add -p
+</code></pre>
+<h4 id="commit_1">commit</h4>
+<ul>
+<li>تغییرات موجود در staging area را به‌عنوان یک commit جدید ثبت می‌کند. پیام کوتاه باید خلاصه و امری باشد. برای توصیف بلندتر می‌توان بدون -m اجرا کرد تا یک ادیتور باز شود.</li>
+</ul>
+<pre><code>git commit -m &quot;commit message&quot;
+</code></pre>
+<h4 id="branch_1">branch</h4>
+<ul>
+<li>این دستور فهرستی از شاخه‌های محلی (local branches) در مخزن را نشان می‌دهد و شاخه‌ای را که هم‌اکنون روی آن هستید مشخص می‌کند. این دستور اطلاعاتی دربارهٔ وضعیت شاخه‌ها (مثل آخرین commit) نمایش نمی‌دهد.</li>
+</ul>
+<pre><code>git branch
+</code></pre>
+<p>گزینهٔ -a مشخص میکند git branch همهٔ شاخه‌ها را نشان دهد — هم شاخه‌های محلی و هم شاخه‌های remote-tracking (آن‌هایی که از remote مثل origin ردیابی می‌شوند).</p>
+<pre><code>git branch -a
+</code></pre>
+<h4 id="switch">switch</h4>
+<ul>
+<li>برای تغییر شاخه (switch) یا ایجاد و رفتن به شاخهٔ جدید استفاده می‌شود. switch خواناتر است ولی checkout هم هنوز رایج است. وقتی شاخه‌ای را می‌سازید با -c یا -b هم‌زمان وارد آن می‌شوید.</li>
+</ul>
+<pre><code>git switch &lt;branch&gt;       
+git switch -c &lt;new-branch&gt;          // create and switch
+git checkout -b &lt;new-branch&gt;
+</code></pre>
+<h4 id="merge_1">merge</h4>
+<ul>
+<li>تغییرات شاخهٔ مشخص را با شاخهٔ جاری ادغام می‌کند. اگر اختلافی نباشد ممکن است fast-forward انجام شود؛ در غیر این صورت یک merge commit ساخته می‌شود. در صورت وجود conflict، باید آن‌ها را دستی حل کرد.</li>
+</ul>
+<pre><code>git merge &lt;branch&gt;
+</code></pre>
+<h4 id="rebase_1">rebase</h4>
+<ul>
+<li>کامیت‌های شاخهٔ فعلی را بر پایهٔ شاخهٔ مشخص «بازپخش» می‌کند تا تاریخچه خطی شود. این کار تاریخچه را بازنویسی می‌کند؛ پس توصیه می‌شود تنها روی شاخه‌های محلی یا شاخه‌هایی که دیگران به آن وابسته نیستند rebase انجام دهید. </li>
+</ul>
+<pre><code>git rebase &lt;base-branch&gt;
+</code></pre>
+<h4 id="fetch">fetch</h4>
+<p>این دستور فقط اطلاعات و تغییرات جدید را از remote دانلود می‌کند بدون ادغام با شاخهٔ محلی. این دستور امن است چون تغییری روی working tree ایجاد نمی‌کند.</p>
+<pre><code>git fetch &lt;remote&gt;
+</code></pre>
+<h4 id="pull">pull</h4>
+<ul>
+<li>git pull --rebase مرسوم تر است چون تاریخچهٔ محلی را خطی نگه می‌دارد؛ ولی اگر نمی‌دانی ولی اگر از کاری که انجام میدهی اطمینان نداری ، بهتر است ابتدا fetch و سپس دستی merge یا rebase انجام دهی.
+ا* ین دستور معادل git fetch به‌علاوهٔ ادغام خودکار (merge)است.</li>
+</ul>
+<pre><code>git pull
+git pull --rebase
+</code></pre>
+<h4 id="push">push</h4>
+<ul>
+<li>تغییرات شاخهٔ محلی را به remote می‌فرستد.</li>
+</ul>
+<pre><code>git push &lt;remote&gt; &lt;branch&gt;
+</code></pre>
+<ul>
+<li>این دستور برای حذف شاخه‌ای از remote استفاده می‌شود</li>
+</ul>
+<pre><code>git push &lt;remote&gt; --delete &lt;branch&gt;
+</code></pre>
+<h4 id="remote_1">remote</h4>
+<ul>
+<li>لیست remotes و آدرس‌های fetch/push آن‌ها را نشان می‌دهد (مثلاً origin). مفید برای دیدن اینکه remote به کجا متصل است.</li>
+</ul>
+<pre><code>git remote -v
+</code></pre>
+<ul>
+<li>یک remote جدید تعریف می‌کند (مثلاً origin) که می‌توان از آن fetch/push کرد.</li>
+</ul>
+<pre><code>git remote add &lt;name&gt; &lt;url&gt;
+</code></pre>
+<h4 id="log">log</h4>
+<ul>
+<li>تاریخچهٔ commits را نمایش می‌دهد.</li>
+</ul>
+<pre><code>git log
+</code></pre>
+<h4 id="dif">dif</h4>
+<ul>
+<li>این دستور تفاوت‌ها را نمایش می‌دهد: git diff تفاوت working tree با index را نشان می‌دهد (unstaged changes)، و git diff --staged تفاوت index با آخرین commit را (یعنی آنچه در commit بعدی خواهد رفت).</li>
+</ul>
+<pre><code>git diff
+git diff --staged
+</code></pre>
+<h4 id="show">show</h4>
+<ul>
+<li>جزئیات یک commit (اطلاعاتی مانند diff, message, metadata) را نمایش می‌دهد.</li>
+</ul>
+<pre><code>git show &lt;commit-ish&gt;
+</code></pre>
+<h4 id="blame">blame</h4>
+<ul>
+<li>برای هر خط فایل نشان می‌دهد که آخرین بار چه کسی و در کدام commit آن خط را تغییر داده است.</li>
+</ul>
+<pre><code>git blame &lt;file&gt;
+</code></pre>
+<h4 id="revert">revert</h4>
+<ul>
+<li>یک commit جدید ایجاد می‌کند که اثر commit مشخص‌شده را خنثی می‌کند. این روش امن برای undo در تاریخچهٔ عمومی است، چون تاریخچه را بازنویسی نمی‌کند.</li>
+</ul>
+<pre><code>git revert &lt;commit&gt;
+</code></pre>
+<h4 id="reset">reset</h4>
+<ul>
+<li>این دستور HEAD را به commit مشخص منتقل می‌کند:<ul>
+<li>soft: فقط HEAD را جابجا می‌کند (staged حفظ می‌شود).</li>
+<li>mixed (پیش‌فرض): HEAD را جابجا و index را ریست می‌کند، اما فایل‌های کاری را نگه می‌دارد.</li>
+<li>hard: همه همگام می‌شوند و تغییرات محلی حذف می‌شوند — این خطرناک است، قبل از اجرا حتماً مطمئن شو.</li>
+</ul>
+</li>
+</ul>
+<pre><code>git reset --soft &lt;commit&gt;
+
+git reset --mixed &lt;commit&gt;  
+
+git reset --hard &lt;commit&gt;
+</code></pre>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Just For Fun !!!
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mammadnet" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/mohamadiann/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8c0-14.3 5.7-27.9 15.8-38S39.6 0 53.8 0s27.9 5.7 38 15.8 15.8 23.8 15.8 38c0 29.7-24.1 54.3-53.8 54.3M447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://mamadnet.ir/" target="_blank" rel="noopener" title="mamadnet.ir" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u06a9\u067e\u06cc \u0634\u062f", "clipboard.copy": "\u06a9\u067e\u06cc \u06a9\u0631\u062f\u0646", "search.result.more.one": "1 \u0645\u0648\u0631\u062f \u062f\u06cc\u06af\u0631 \u062f\u0631 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647", "search.result.more.other": "# \u0645\u0648\u0631\u062f \u062f\u06cc\u06af\u0631 \u062f\u0631 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647", "search.result.none": "\u0633\u0646\u062f\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f", "search.result.one": "1 \u0633\u0646\u062f \u06cc\u0627\u0641\u062a \u0634\u062f", "search.result.other": "# \u0633\u0646\u062f \u06cc\u0627\u0641\u062a \u0634\u062f", "search.result.placeholder": "\u0628\u0631\u0627\u06cc \u0634\u0631\u0648\u0639 \u062c\u0633\u062a\u062c\u0648 \u062a\u0627\u06cc\u067e \u06a9\u0646\u06cc\u062f", "search.result.term.missing": "\u0645\u0648\u062c\u0648\u062f \u0646\u06cc\u0633\u062a", "select.version": "\u0627\u0646\u062a\u062e\u0627\u0628 \u0648\u06cc\u0631\u0627\u06cc\u0634"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
